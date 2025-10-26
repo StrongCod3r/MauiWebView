@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="MauiWebView/MauiWebView.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
