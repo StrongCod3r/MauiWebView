@@ -3,11 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp2.MainPage">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="Add_Clicked" />
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
-    </ContentPage.ToolbarItems>
+    <AbsoluteLayout>
+        <WebView x:Name="WebViewBrowser"
+                 Source="http://192.168.1.139:5173/"
+                 AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All" />
 
-    <WebView Source="http://192.168.1.139:5173/" />
+        <!-- Floating Action Button -->
+        <Button x:Name="FloatingButton"
+                Text="+"
+                Opacity="0.5"
+                WidthRequest="30"
+                HeightRequest="30"
+                CornerRadius="30"
+                BackgroundColor="DodgerBlue"
+                TextColor="White"
+                AbsoluteLayout.LayoutBounds="1,1,20,20"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Clicked="FloatingButton_Clicked" />
+
+        <!-- Modal Overlay (shown when OptionsPanel is visible) -->
+        <BoxView x:Name="ModalOverlay"
+                 IsVisible="{Binding IsVisible, Source={x:Reference OptionsPanel}}"
+                 Color="#80000000"
+                 AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All" />
+
+        <!-- Centered Options Panel as Dialog -->
+        <Border x:Name="OptionsPanel"
+               IsVisible="False"
+               WidthRequest="200"
+               HeightRequest="200"
+               BackgroundColor="#DDFFFFFF">
+            <AbsoluteLayout>
+                <Button
+                  Text="+"
+                  Opacity="0.5"
+                  WidthRequest="10"
+                  HeightRequest="10"
+                  CornerRadius="20"
+                  BackgroundColor="DodgerBlue"
+                  TextColor="White"
+                  AbsoluteLayout.LayoutBounds="1,0.5,10,30"
+                  AbsoluteLayout.LayoutFlags="PositionProportional"/>   
+            </AbsoluteLayout>
+        </Border>
+    </AbsoluteLayout>
 
 </ContentPage>
