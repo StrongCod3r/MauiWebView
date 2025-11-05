@@ -29,9 +29,6 @@ namespace MauiApp2
             Controls.FullScreen();
 #endif
 
-            // Espera un pequeño retraso para asegurarte que la UI se haya renderizado
-            //await Task.Delay(100);
-
             await LoadWebPage(silent: true);
         }
 
